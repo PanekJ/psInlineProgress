@@ -12,6 +12,11 @@ function Write-InlineProgress {
             Author: Øyvind Kallstad
             Date: 28.04.2016
             Version: 1.0
+
+            Author: DimoN
+            Date: 21.06.2019
+            Version: 1.1
+
         .LINK
             https://communary.wordpress.com/
     #>
