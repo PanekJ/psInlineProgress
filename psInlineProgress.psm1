@@ -7,15 +7,15 @@ function Write-InlineProgress {
         .NOTES
             Be sure to always call the function with either the -Stop or -Completed switch after the progress bar is finished.
             Be sure to NOT output anything while the progress bar is updating - or it WILL "break"!
-            This function will not work when run in PowerShell ISE.
+            This function will work when run in PowerShell ISE.
 
             Author: Øyvind Kallstad
             Date: 28.04.2016
             Version: 1.0
 
             Author: DimoN
-            Date: 21.06.2019
-            Version: 1.1
+            Date: 24.06.2019
+            Version: 1.2
 
         .LINK
             https://communary.wordpress.com/
