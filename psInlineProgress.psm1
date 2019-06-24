@@ -145,8 +145,8 @@ function Write-InlineProgress {
                 $host.UI.RawUI.BufferSize = $size
             }
 
-            if ($maxID -lt $ID) {
-                $maxID = $ID
+            if ( $script:maxID -lt $ID) {
+                 $script:maxID = $ID
             }
             if (-not ($script:FirstProgressPositionY)) {
                 $script:FirstProgressPositionY = $host.UI.RawUI.CursorPosition.Y
@@ -264,7 +264,7 @@ function Write-InlineProgress {
 
             if ($Completed -and $id -eq 1) {
                 # do some clean-up and jump to the next line
-                $host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , $($cursorPositionY + $maxID+2)
+                $host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , $($cursorPositionY +  $script:maxID - 1 )
                 Remove-Variable -Name 'lastProgressString' -Scope 'Script' -ErrorAction SilentlyContinue
                 Remove-Variable -Name 'FirstProgressPositionY' -Scope 'Script' -ErrorAction SilentlyContinue
                 [console]::CursorVisible = $true
