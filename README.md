@@ -12,4 +12,4 @@ Else, you would have to download the zip from this repository and manually unpac
 
 ## How to use it
 
-See my [blog post](https://communary.net/2016/04/30/inline-progress-bar-in-powershell/) to see examples of how to use it.
+See [blog post](https://communary.net/2016/04/30/inline-progress-bar-in-powershell/) to see examples of how to use it.
