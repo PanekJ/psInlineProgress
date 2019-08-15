@@ -1,7 +1,8 @@
 # psInlineProgress
 
 This module exposes just one function; Write-InlineProgress, which lets you write inline progress bars in PowerShell.
-![Example multiline text progressbar](https://raw.githubusercontent.com/homedimon/psInlineProgress/blob/master/Sample.gif)
+
+![Example multiline text progressbar](https://raw.githubusercontent.com/homedimon/psInlineProgress/master/Sample.gif)
 
 
 ## Installation
