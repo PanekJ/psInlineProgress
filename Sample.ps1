@@ -1,3 +1,4 @@
+#Requires -Modules Pansies, psInlineProgress
 $scriptName = $($MyInvocation.MyCommand.Name)
 $scriptPath = Split-Path -Parent $MyInvocation.MyCommand.Path
 
