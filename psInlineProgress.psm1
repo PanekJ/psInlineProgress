@@ -72,34 +72,29 @@ function Write-InlineProgress {
         # Customize the progress character.
         [Parameter(ParameterSetName = 'normal')]
         [Parameter(ParameterSetName = 'completed')]
-        [ValidateLength(1, 1)]
         [ValidateNotNull()]
         [string] $ProgressCharacter = '#',
 
         # Customize the progress fill character.
         [Parameter(ParameterSetName = 'normal')]
         [Parameter(ParameterSetName = 'completed')]
-        [ValidateLength(1, 1)]
         [ValidateNotNull()]
         [string] $ProgressFillCharacter = '#',
 
         # Customize the fill character.
         [Parameter(ParameterSetName = 'normal')]
         [Parameter(ParameterSetName = 'completed')]
-        [ValidateLength(1, 1)]
         [ValidateNotNull()]
         [string] $ProgressFill = '.',
 
         # Customize the bracket before the progress bar.
         [Parameter(ParameterSetName = 'normal')]
         [Parameter(ParameterSetName = 'completed')]
-        [ValidateLength(0, 1)]
         [string] $BarBracketStart = '[',
 
         # Customize the bracket after the progress bar.
         [Parameter(ParameterSetName = 'normal')]
         [Parameter(ParameterSetName = 'completed')]
-        [ValidateLength(0, 1)]
         [string] $BarBracketEnd = ']',
 
         # Use Write-Output instead of Console.Write
@@ -123,14 +118,12 @@ function Write-InlineProgress {
         if ($Stop) {
             if ($OutputLastProgress) {
                 Write-Host (($script:lastProgressString).ToString()) -NoNewline
-            }
-            else {
+            } else {
                 Remove-Variable -Name 'lastProgressString' -Scope 'Script' -ErrorAction SilentlyContinue
                 [console]::WriteLine()
             }
             [console]::CursorVisible = $true
-        }
-        else {
+        } else {
             if ($Completed) {
                 $PercentComplete = 100
                 if ($PSBoundParameters.ContainsKey('SecondsRemaining')) {
@@ -146,7 +139,7 @@ function Write-InlineProgress {
             }
 
             if ( $script:maxID -lt $ID) {
-                 $script:maxID = $ID
+                $script:maxID = $ID
             }
             if (-not ($script:FirstProgressPositionY)) {
                 $script:FirstProgressPositionY = $host.UI.RawUI.CursorPosition.Y
@@ -155,9 +148,8 @@ function Write-InlineProgress {
             if ($id -gt 1) {
                 #$cursorPosition = $host.UI.RawUI.CursorPosition
                 #$cursorPositionY = $host.UI.RawUI.CursorPosition.Y
-                [int] $cursorPositionY =  $script:FirstProgressPositionY + $id - 1
-            }
-            else {
+                [int] $cursorPositionY = $script:FirstProgressPositionY + $id - 1
+            } else {
                 [int] $cursorPositionY = $script:FirstProgressPositionY
             }
             [console]::CursorVisible = $false
@@ -169,8 +161,7 @@ function Write-InlineProgress {
             # calculate the size of the activity part of the output string
             if ($ActivityPadding -eq 0) {
                 $activityPart = [math]::Floor($windowWidth / 4)
-            }
-            else {
+            } else {
                 $activityPart = $ActivityPadding
             }
 
@@ -201,8 +192,7 @@ function Write-InlineProgress {
             # the 5 is to account for the space of the percent information
             if ($ShowPercent) {
                 $progressBarWidth = $windowWidth - (($progressString.Length) + 5)
-            }
-            else {
+            } else {
                 $progressBarWidth = $windowWidth - ($progressString.Length) + 1
             }
 
@@ -221,8 +211,7 @@ function Write-InlineProgress {
                 if ($barNotProgressed -gt 0) {
                     [void]$progressString.Append(($ProgressFillCharacter * ($barProgressed - 1)))
                     [void]$progressString.Append($ProgressCharacter)
-                }
-                else {
+                } else {
                     [void]$progressString.Append(($ProgressFillCharacter * $barProgressed))
                 }
             }
@@ -246,8 +235,7 @@ function Write-InlineProgress {
                 #[Console]::SetCursorPosition([int]0 , [int]$cursorPositionY)
                 if ($UseWriteOutput) {
                     Write-Output ($progressString.ToString())
-                }
-                else {
+                } else {
                     [console]::Write(($progressString.ToString()))
                 }
 
@@ -258,13 +246,13 @@ function Write-InlineProgress {
             if ($Completed) {
                 # do some clean-up and jump to the next line
                 Remove-Variable -Name 'lastProgressString' -Scope 'Script' -ErrorAction SilentlyContinue
-#                [console]::CursorVisible = $true
-#                [console]::WriteLine()
+                #                [console]::CursorVisible = $true
+                #                [console]::WriteLine()
             }
 
             if ($Completed -and $id -eq 1) {
                 # do some clean-up and jump to the next line
-                $host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , $($cursorPositionY +  $script:maxID - 1 )
+                $host.UI.RawUI.CursorPosition = New-Object System.Management.Automation.Host.Coordinates 0 , $($cursorPositionY + $script:maxID - 1 )
                 Remove-Variable -Name 'lastProgressString' -Scope 'Script' -ErrorAction SilentlyContinue
                 Remove-Variable -Name 'FirstProgressPositionY' -Scope 'Script' -ErrorAction SilentlyContinue
                 [console]::CursorVisible = $true
@@ -273,14 +261,13 @@ function Write-InlineProgress {
             }
 
         }
-    }
-    else {
+    } else {
         #Write-Warning 'This function is not compatible with PowerShell ISE.'
         if ($Completed) {
-            Write-Progress -Activity $Activity -id $id -Completed
+            Write-Progress -Activity $Activity -Id $id -Completed
         } else {
-            Write-Progress -Activity $Activity -PercentComplete $PercentComplete -id $id -SecondsRemaining $SecondsRemaining
-        #-Status  -Completed -CurrentOperation
+            Write-Progress -Activity $Activity -PercentComplete $PercentComplete -Id $id -SecondsRemaining $SecondsRemaining
+            #-Status  -Completed -CurrentOperation
         }
     }
 }
