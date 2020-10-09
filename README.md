@@ -1,20 +1,19 @@
 # psInlineProgress
 
+Forked from [homedimon/psInlineProgress](https://github.com/homedimon/psInlineProgress)
+
 This module exposes just one function; Write-InlineProgress, which lets you write inline progress bars in PowerShell.
 
-![Example multiline text progressbar](https://raw.githubusercontent.com/homedimon/psInlineProgress/master/Sample.gif)
-
+![Example multiline text progressbar](https://github.com/panekj/psInlineProgress/raw/master/Sample.gif)
 
 ## Installation
 
-If you have PowerShellGet, you can install it with:
-
-    Install-Module psInlineProgress
-
-Else, you would have to download the zip from this repository and manually unpack it to one of the module paths on your system.
+Clone the repository to path of your choice and load it with `Import-Module`
 
 ## How to use it
 
+Below blog post describes usage of single line `Write-InlineProgress` originally made by [gravejester](https://github.com/gravejester/psInlineProgress)
 See [blog post](https://communary.net/2016/04/30/inline-progress-bar-in-powershell/) to see examples of how to use it.
 
-or see [Sample.ps1](https://raw.githubusercontent.com/homedimon/psInlineProgress/blob/master/Sample.ps1)
+or see multiline example at [Sample.ps1](https://github.com/panekj/psInlineProgress/blob/master/Sample.ps1)
+*Sample additionally uses module [Pansies](https://github.com/PoshCode/Pansies) for colourful output*
